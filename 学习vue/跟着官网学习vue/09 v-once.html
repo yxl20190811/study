@@ -1,0 +1,22 @@
+<head>
+  <head>
+    <script src="vue.js"> </script>
+  </head>
+
+  <body>
+    <div id="MyApp">
+       <p v-once=true>{{ message }}</p>
+    </div>
+
+    <script>
+      var app = new Vue(
+         {
+             el:  "#MyApp",
+             data: {
+               message: 'hello'
+             }
+         }
+      );
+    </script>
+  </body>
+</head>

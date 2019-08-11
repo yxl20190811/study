@@ -1,0 +1,30 @@
+<head>
+  <head>
+    <script src="vue.js"> </script>
+  </head>
+
+  <body>
+    <div id="MyApp">
+       <ol>
+           <li v-for="item in lst">
+            {{item.text}}
+           </li>
+       </ol>
+    </div>
+
+    <script>
+      var app = new Vue(
+         {
+             el:  "#MyApp",
+             data: {
+               lst: [
+                 {text:123},
+                 {text:345},
+                 {text:456}
+               ]
+             }
+         }
+      );
+    </script>
+  </body>
+</head>

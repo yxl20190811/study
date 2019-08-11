@@ -1,0 +1,22 @@
+<head>
+  <head>
+    <script src="vue.js"> </script>
+  </head>
+
+  <body>
+    <div id="MyApp">
+       <p v-html="message">{{message }}</p>
+    </div>
+
+    <script>
+      var app = new Vue(
+         {
+             el:  "#MyApp",
+             data: {
+               message: '<span title="我司123">点我显示tooltip</span>'
+             }
+         }
+      );
+    </script>
+  </body>
+</head>

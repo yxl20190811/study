@@ -1,0 +1,25 @@
+<head>
+  <head>
+    <script src="vue.js"> </script>
+  </head>
+
+  <body>
+    <div id="MyApp">
+       <div>
+          <a href="//www.runoob.com/" v-bind:class="{active:isActive}">runoob.com</a>
+       </div>
+    </div>
+
+    <script>
+      var app = new Vue(
+         {
+             el:  "#MyApp",
+             data: {
+               message: 'hello',
+               isActive: false
+             }
+         }
+      );
+    </script>
+  </body>
+</head>

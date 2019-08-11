@@ -1,0 +1,43 @@
+<head>
+  <head>
+    <script src="vue.js"> </script>
+  </head>
+
+  <body>
+    <div id="MyApp">
+       <ol>
+           <hh v-bind:param='lst1'></hh>
+       </ol>
+
+       <ol>
+           <hh v-bind:param='lst2'></hh>
+       </ol>
+    </div>
+
+    <script>
+      Vue.component('hh',
+          {
+              props:['param'],
+              template: '<ol><li v-for="item in param">{{item.text}}</li></ol>'
+          }
+      );
+      var app = new Vue(
+         {
+             el:  "#MyApp",
+             data: {
+               lst1: [
+                 {text:123},
+                 {text:345},
+                 {text:456}
+               ],
+               lst2: [
+                 {text:'vue'},
+                 {text:'angular'},
+                 {text:'react'}
+               ] 
+             }
+         }
+      );
+    </script>
+  </body>
+</head>

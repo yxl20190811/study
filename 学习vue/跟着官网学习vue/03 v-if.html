@@ -1,0 +1,23 @@
+<head>
+  <head>
+    <script src="vue.js"> </script>
+  </head>
+
+  <body>
+    <div id="MyApp">
+       <p v-if="IsShow">{{ message }}</P>
+    </div>
+
+    <script>
+      var app = new Vue(
+         {
+             el:  "#MyApp",
+             data: {
+               message: 'hello',
+               IsShow: true
+             }
+         }
+      );
+    </script>
+  </body>
+</head>

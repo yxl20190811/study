@@ -1,0 +1,28 @@
+<head>
+  <head>
+    <script src="vue.js"> </script>
+  </head>
+
+  <body>
+    <div id="MyApp">
+       <p>{{ message }}</p>
+       <button v-on:click="ReverseText()">·­×ª×Ö·û´®</button>
+    </div>
+
+    <script>
+      var app = new Vue(
+         {
+             el:  "#MyApp",
+             data: {
+               message: 'hello'
+             },
+             methods:{
+               ReverseText:function(){
+                 this.message="hh"
+               }
+             }
+         }
+      );
+    </script>
+  </body>
+</head>

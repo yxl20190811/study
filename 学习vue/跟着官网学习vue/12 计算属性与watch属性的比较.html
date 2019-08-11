@@ -1,0 +1,42 @@
+<head>
+  <head>
+    <script src="vue.js"> </script>
+  </head>
+
+  <body>
+    <div id="MyApp">
+       {{test}}
+       {{ message }}
+       {{ReverseMessage}}
+       {{MyReverse()}}
+    </div>
+
+    <script>
+      var app = new Vue(
+         {
+             el:  "#MyApp",
+             data: {
+               message: 'hello',
+               test: 'hh'
+             },
+             computed:
+             {
+                ReverseMessage:function(){
+                   return this.message.split('').reverse().join('')+Date.now()
+                }
+             },
+             methods: {
+                MyReverse:function(){
+                   return this.message.split('').reverse().join('')+Date.now()
+                }
+             },
+             watch:{
+               test: function(val){
+                  this.message=val + Date.now();
+               }
+             }
+         }
+      );
+    </script>
+  </body>
+</head>

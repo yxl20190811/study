@@ -1,0 +1,25 @@
+<head>
+  <head>
+    <script src="vue.js"> </script>
+  </head>
+
+  <body>
+    <div id="MyApp">
+       <div v-if="message=='hehuan'">我是合欢<input placeholder="hehuan" key="1"></input></div>
+       <div v-else-if="message=='yanxiaolin'">我是闫小林<input placeholder="yanxiaolin"  key="2"></input></div>
+       <div v-else="message=='yanxiaolin'">我是谁<input placeholder="heming"  key="3"></input></div>
+    </div>
+
+    <script>
+      var app = new Vue(
+         {
+             el:  "#MyApp",
+             data: {
+               message: 'hello',
+               isActive: false
+             }
+         }
+      );
+    </script>
+  </body>
+</head>

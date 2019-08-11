@@ -1,0 +1,29 @@
+<head>
+  <head>
+    <script src="vue.js"> </script>
+  </head>
+
+  <body>
+    <div id="MyApp">
+       {{ message }}
+       {{ReverseMessage}}
+    </div>
+
+    <script>
+      var app = new Vue(
+         {
+             el:  "#MyApp",
+             data: {
+               message: 'hello'
+             },
+             computed:
+             {
+                ReverseMessage:function(){
+                   return this.message.split('').reverse().join('')
+                }
+             }
+         }
+      );
+    </script>
+  </body>
+</head>
