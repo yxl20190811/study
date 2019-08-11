@@ -1,0 +1,23 @@
+<head>
+  <head>
+    <script src="vue.js"> </script>
+  </head>
+
+  <body>
+    <div id="MyApp">
+       <span v-bind:title="message"> 鼠标在此停留一会，会显示tooltip</span>
+       <p>{{message}}</p>
+    </div>
+
+    <script>
+      var app = new Vue(
+         {
+             el:  "#MyApp",
+             data: {
+               message: '页面加载于：' + new Date().toLocaleString()
+             }
+         }
+      );
+    </script>
+  </body>
+</head>
