@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string-array name="MyArray">
+        <item>游泳</item>
+        <item>打篮球</item>
+        <item>写代码</item>
+    </string-array>
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <AnalogClock
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </AnalogClock>
+
+    <DigitalClock
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp">
+
+    </DigitalClock>
+
+    <TextClock
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:format12Hour="HH:mm:ss"
+        android:textSize="30sp" />
+    <TextView
+        android:id="@+id/textView"
+        style="@style/Widget.AppCompat.TextView.SpinnerItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="30sp" />
+</LinearLayout>
