@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+  <TextView 
+    android:text="今日心情"
+    android:id="@+id/TextView11"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:textColor="#FFFFFF"
+    android:textSize="20dip"
+    android:clickable="true"
+  >
+  </TextView>
+  <EditText 
+    android:id="@+id/EditText01" 
+    android:singleLine="false"
+    android:layout_width="fill_parent" 
+    android:layout_height="60dip"
+  >
+  </EditText>  
+  <Button 
+    android:text="确定" 
+    android:id="@+id/Button01" 
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content">
+  </Button>
+</LinearLayout>

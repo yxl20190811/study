@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.a4_5">
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        >
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".editActive"  android:label="@string/app_name">
+
+        </activity>
+
+        <receiver
+            android:name=".XqWidgetProvider"
+            android:label="时间心情"
+            android:icon="@drawable/heart"
+            >
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/appwidgetprovder"></meta-data>
+            <intent-filter>
+                <action android:name="wyf.action.update_xq"></action>
+                <action android:name="wyf.action.time_xq"></action>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+        </receiver>
+        <service android:name=".MyService"/>
+    </application>
+
+</manifest>

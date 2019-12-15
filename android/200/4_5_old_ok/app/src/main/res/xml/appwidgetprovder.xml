@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="280dip"
+    android:minHeight="60dip"  
+    android:initialLayout="@layout/wmain">
+</appwidget-provider>
+<!-- android:initialLayout 给出桌面布局文件 -->
+<!-- android:updatePeriodMillis 给出更新的时延 -->
