@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">5_4_old</string>
+    <string name="dial">调用系统程序发送短信</string>
+    <string name="sms">短信内容</string>
+    <string name="tel">目标号码</string>
+    <string name="telno">5556</string>
+    <string name="smsnr">早上喝老北京豆汁吃六必居咸菜了吗？</string>
+</resources>
