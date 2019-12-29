@@ -24,7 +24,7 @@ public class ContactsAdapter extends CursorAdapter {
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         final LayoutInflater MyLi = LayoutInflater.from(context);
         final TextView tv = (TextView)MyLi.inflate(
-                R.layout.activity_main,
+                android.R.layout.simple_dropdown_item_1line,
                 parent,
                 false);
 
