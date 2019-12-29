@@ -6,8 +6,7 @@
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="AutoCompleteTextView" />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/textView"
