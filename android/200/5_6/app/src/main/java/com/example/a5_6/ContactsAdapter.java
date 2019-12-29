@@ -42,7 +42,7 @@ public class ContactsAdapter extends CursorAdapter {
         v.setText(text);
     }
 
-    public String  Convert2String(Cursor cur){
+    public String  convertToString(Cursor cur){
         String str = cur.getString(
                 cur.getColumnIndexOrThrow(Contacts.People.NAME));
         return str;
