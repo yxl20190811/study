@@ -37,7 +37,9 @@ public class ContactsAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         TextView v = (TextView)view;
-        v.setText(cursor.getColumnIndexOrThrow(Contacts.People.NAME));
+        int index = cursor.getColumnIndexOrThrow(Contacts.People.NAME);
+        String text = cursor.getString(index);
+        v.setText(text);
     }
 
     public String  Convert2String(Cursor cur){
