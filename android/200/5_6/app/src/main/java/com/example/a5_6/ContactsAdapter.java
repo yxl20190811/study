@@ -28,7 +28,7 @@ public class ContactsAdapter extends CursorAdapter {
                 parent,
                 false);
 
-        int index = cursor.getColumnIndexOrThrow(Contacts.People.NAME);
+        int index = cursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME);
         String text = cursor.getString(index);
         tv.setText(text);
         return tv;
@@ -37,14 +37,14 @@ public class ContactsAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         TextView v = (TextView)view;
-        int index = cursor.getColumnIndexOrThrow(Contacts.People.NAME);
+        int index = cursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME);
         String text = cursor.getString(index);
         v.setText(text);
     }
 
     public String  convertToString(Cursor cur){
         String str = cur.getString(
-                cur.getColumnIndexOrThrow(Contacts.People.NAME));
+                cur.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
         return str;
     }
 
@@ -56,17 +56,17 @@ public class ContactsAdapter extends CursorAdapter {
         String ret = "";
         String[] str = null;
         if (null != cs) {
-            ret = ret + "UPPER(\"" + Contacts.People.NAME + "\") GLOB ?";
+            ret = ret + "UPPER(\"" + ContactsContract.Contacts.DISPLAY_NAME + "\") GLOB ?";
             str = new String[]{
                     cs.toString().toUpperCase() + "*"
             };
         }
         return m_cr.query(
-                Contacts.People.CONTENT_URI,
+                ContactsContract.Contacts.CONTENT_URI,
                 MainActivity.m_PeopoleProject,
                 null == ret ? null : ret,
                 str,
-                Contacts.People.DEFAULT_SORT_ORDER
+                null
         );
 
 

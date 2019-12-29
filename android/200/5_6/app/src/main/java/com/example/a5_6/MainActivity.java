@@ -22,14 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView m_tv;
     private AutoCompleteTextView m_at;
 
-    static public String[] m_PeopoleProject = {
-            Contacts.People._ID,
-            Contacts.People.PRIMARY_PHONE_ID,
-            Contacts.People.TYPE,
-            Contacts.People.NUMBER,
-            Contacts.People.LABEL,
-            Contacts.People.NAME
-    };
+    static public String[] m_PeopoleProject =
+            new String[] {ContactsContract.Contacts._ID,ContactsContract.Contacts.DISPLAY_NAME,ContactsContract.Contacts.HAS_PHONE_NUMBER};
     private Cursor m_cur;
     private ContactsAdapter m_ca;
     @Override
@@ -73,17 +67,9 @@ public class MainActivity extends AppCompatActivity {
     public void open(){
         ContentResolver con = getContentResolver();
         m_cur = con.query(
-                Contacts.People.CONTENT_URI,
+                ContactsContract.Contacts.CONTENT_URI,
                 m_PeopoleProject,
-                null, null,
-                Contacts.People.DEFAULT_SORT_ORDER);
-        int count  = m_cur.getCount();
-        int index = m_cur.getColumnIndexOrThrow(Contacts.People.NAME);
-        for(int i = 0; i < count; ++i){
-
-            m_cur.moveToPosition(i);
-            String name = m_cur.getString(index);
-        }
+                null, null, null);
         m_ca = new ContactsAdapter(this, m_cur);
 
         m_at.setAdapter(m_ca);
@@ -91,14 +77,27 @@ public class MainActivity extends AppCompatActivity {
         m_at.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String result = "联系人: ";
                 Cursor c = m_ca.getCursor();
                 c.moveToPosition(position);
-                String name = c.getString(c.getColumnIndexOrThrow(Contacts.People.NAME));
-                String num = c.getString(c.getColumnIndexOrThrow(Contacts.People.NUMBER));
-                if(null == num){
-                    num = "无";
+                String name = c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
+                result  += name;
+
+                String contactId = c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
+                if(c.getInt(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)) > 0){
+                    result  += " 电话号码";
+                            Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                            null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID+ " = " + contactId, null, null);
+                    if(phones.moveToFirst()){
+                        do{
+//遍历所有的电话号码
+                            String phonenum= phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                            result +=":"+phonenum;
+                        }while(phones.moveToNext());
+                    }
                 }
-                m_tv.setText("联系人: "+ name + " 电话:"  + num);
+
+                m_tv.setText(result);
             }
         });
     }
