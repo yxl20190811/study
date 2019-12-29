@@ -28,7 +28,9 @@ public class ContactsAdapter extends CursorAdapter {
                 parent,
                 false);
 
-        tv.setText(cursor.getColumnIndexOrThrow(Contacts.People.NAME));
+        int index = cursor.getColumnIndexOrThrow(Contacts.People.NAME);
+        String text = cursor.getString(index);
+        tv.setText(text);
         return tv;
     }
 
