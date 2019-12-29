@@ -48,24 +48,28 @@ public class ContactsAdapter extends CursorAdapter {
         return str;
     }
 
-    public Cursor RunQueryThread(CharSequence cs){
-        if(null != getFilterQueryProvider()){
+    public Cursor runQueryOnBackgroundThread(CharSequence cs) {
+        if (null != getFilterQueryProvider()) {
             return getFilterQueryProvider().runQuery(cs);
         }
+
         String ret = "";
         String[] str = null;
-        if(null != cs){
-            ret = ret + "UPPER(\""  + Contacts.People.NAME + "\")";
+        if (null != cs) {
+            ret = ret + "UPPER(\"" + Contacts.People.NAME + "\") GLOB ?";
             str = new String[]{
-               cs.toString().toUpperCase() +"*"
+                    cs.toString().toUpperCase() + "*"
             };
         }
         return m_cr.query(
                 Contacts.People.CONTENT_URI,
                 MainActivity.m_PeopoleProject,
-                null==ret?null:ret,
+                null == ret ? null : ret,
                 str,
                 Contacts.People.DEFAULT_SORT_ORDER
         );
+
+
+
     }
 }
