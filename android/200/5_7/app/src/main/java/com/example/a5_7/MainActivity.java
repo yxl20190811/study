@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void open(){
         Uri uri = Uri.parse("content://contacts/people");
-        Intent intent = new Intent(Intent.ACTION_PICK, uri);
+        Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
         this.startActivityForResult(intent, 1);
     }
 
@@ -71,21 +71,11 @@ public class MainActivity extends AppCompatActivity {
         }
         final Uri uri = data.getData();
         if(null != uri){
-
-            Cursor cur0 = this.managedQuery(
-                    uri,
-                    null,
-                    null, null, null);
-            cur0.moveToFirst();
-            String n = cur0.getString(cur0.getColumnIndexOrThrow(Contacts.People.NAME));
-            String ret = "UPPER(\"" + ContactsContract.Contacts.DISPLAY_NAME + "\") GLOB ?";
-            String[] str = new String[]{n.toUpperCase() + "*"};
-
             ContentResolver con = getContentResolver();
             Cursor cur = con.query(
-                    ContactsContract.Contacts.CONTENT_URI,
-                    m_PeopoleProject,
-                    ret, str, null);
+                    uri,
+                    null,
+                   null , null, null);
 
             cur.moveToFirst();
             String name= cur.getString(cur.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
