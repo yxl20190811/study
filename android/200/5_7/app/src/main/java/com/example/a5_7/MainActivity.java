@@ -62,9 +62,6 @@ public class MainActivity extends AppCompatActivity {
         this.startActivityForResult(intent, 1);
     }
 
-    static public String[] m_PeopoleProject =
-            new String[] {ContactsContract.Contacts._ID,ContactsContract.Contacts.DISPLAY_NAME,ContactsContract.Contacts.HAS_PHONE_NUMBER};
-
     public void onActivityResult(int reqCode, int retCode, Intent data ){
         if(1 != reqCode){
             return;
