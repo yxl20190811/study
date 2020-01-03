@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, SpinnerActivity!</string>
+    <string name="app_name">Sample5_8</string>
+    <string name="ys">您的爱好</string>
+    <string name="lq">篮  球</string>
+    <string name="zq">足  球</string>
+    <string name="pq">排  球</string>
+</resources>
