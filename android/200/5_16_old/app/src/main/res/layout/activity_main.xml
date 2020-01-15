@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffcc66">
+    <Button
+        android:text="查看手机信息"
+        android:id="@+id/Button01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    </Button>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffcc66"
+        android:paddingLeft="0dip"
+        android:paddingRight="5dip"
+        android:paddingTop="5dip">
+        <ListView
+            android:id="@+id/ListView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="#ffcc66"
+            >
+        </ListView>
+    </LinearLayout>
+
+</LinearLayout>
