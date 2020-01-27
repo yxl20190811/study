@@ -5,7 +5,9 @@
 TShortRouteLst::TShortRouteLst()
 {
     m_count = 0;
-    m_head = NULL;
+    memset(m_map, 0, sizeof(m_map));
+    memset(m_HasPop, 0, sizeof(m_HasPop));
+    
 }
 
 
@@ -35,7 +37,7 @@ TShortRoutePool::TShortRoutePool(int NodeCount)
 
 void TShortRoute::PrintRoute(unsigned long long kSpf)
 {
-    printf("\r\n%u\t", kSpf);
+    printf("\r\nk=%u:route size=%u\t", kSpf, m_NodeCount);
     for(int i = m_NodeCount-1; i >= 0; --i)
     {
         printf("%s\t", m_NodeLst[i]->m_name.c_str());

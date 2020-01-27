@@ -27,7 +27,7 @@ public:
             if(kSpf%100 ==99)
             {
                 long long time = ::GetTickCount();
-                printf("\r\n%d:%d:%d:%d", kSpf, time-StartTime, time-LastTime,m_RouteLst.m_count);
+                printf("\r\nk=%d:total time=%d:this time=%d: pool used=%d", kSpf, time-StartTime, time-LastTime,m_RouteLst.m_count);
                 LastTime = time;
             }
             //从路由列表中取出最短的路由，作为第K条最短路由
@@ -35,7 +35,7 @@ public:
             {
                 curRoute = m_RouteLst.pop();
                 if(NULL == curRoute){break;}//没有找到最短路由则不再有更长的路由，退出循环
-                //curRoute->PrintRoute(kSpf);
+                curRoute->PrintRoute(kSpf);
                 //检查是否停止循环
                 curRoute->SetDelEdgeState(true);//禁止该路由上已经删除的边
                 DelEdgeLst.FindNeedDelEdge(curRoute); //从最短路由中找出“需要删除的边”

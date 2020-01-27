@@ -36,8 +36,8 @@ void AddEdge(TKspf& spf, int i, int j)
 void test3()
 {
     TKspf spf;
-    const int x = 20;
-    const int y = 20;
+    const int x = 10;
+    const int y = 10;
     for(int i = 0; i < x; ++i)
     {
         for(int j = 0; j < y; ++j)
@@ -45,7 +45,7 @@ void test3()
             AddEdge(spf, i, j);
         }
     }
-    spf.init("3_3", "10_10");
+    spf.init("1_1", "5_5");
     spf.kspf();
 }
 

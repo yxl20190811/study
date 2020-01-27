@@ -5,6 +5,7 @@ class TNode;
 #include <stdio.h>
 #include <stdlib.h>
 #include <memory.h>
+#include <map>
 
 class TShortRoute
 {
@@ -34,55 +35,75 @@ class TShortRouteLst
 {
 public:
     long long  m_count;
-    TShortRoute* m_head;
+    TShortRoute*  m_map[10000];
+    TShortRoute*  m_HasPop[10000];
 public:
     TShortRouteLst();
 public:
     inline void push(TShortRoute* route)
     {
         ++m_count;
-        if(NULL == m_head || m_head->m_dis > route->m_dis)
         {
-            route->m_next = m_head;
-            m_head = route;
-            return;
-        }
-
-        TShortRoute* prev = m_head;
-        TShortRoute* cur = prev->m_next;
-        while(NULL != cur)
-        {
-            if(cur->m_dis > route->m_dis)
+            TShortRoute*& head = m_HasPop[route->m_NodeCount];
+            if(NULL != head)
             {
-                break;
-            }
-            prev = cur;
-            cur = cur->m_next;
-        }
-        if(prev->m_dis == route->m_dis && prev->m_NodeCount == route->m_NodeCount)
-        {
-            int count = prev->m_NodeCount;
-            if(0 == memcmp(prev->m_NodeLst, route->m_NodeLst, sizeof(void*)*count))
-            {
-                return;
+                TShortRoute* cur = head;
+                while(cur)
+                {
+                    if(0 == memcmp(cur->m_NodeLst, route->m_NodeLst, cur->m_NodeCount*sizeof(void*)))
+                    {
+                        //cur->PrintRoute(-1);
+                        //route->PrintRoute(-2);
+                        return;
+                    }
+                    cur = cur->m_next;
+                }
             }
         }
         {
-            prev->m_next = route;
-            route->m_next = cur;
-            return;
+            TShortRoute*& head = m_map[route->m_NodeCount];
+            if(NULL != head)
+            {
+                TShortRoute* cur = head;
+                while(cur)
+                {
+                    if(0 == memcmp(cur->m_NodeLst, route->m_NodeLst, cur->m_NodeCount*sizeof(void*)))
+                    {
+                        //cur->PrintRoute(-1);
+                        //route->PrintRoute(-2);
+                        return;
+                    }
+                    cur = cur->m_next;
+                }
+            }
+            route->m_next = head;
+            head = route;
         }
     }
 public:
     inline TShortRoute* pop()
     {
-        if(NULL == m_head)
+        TShortRoute** head = NULL;
+        for(int i = 0; i < sizeof(m_map)/sizeof(TShortRoute*); ++i)
+        {
+            if(NULL != m_map[i])
+            {
+                head = &(m_map[i]);
+                break;
+            }
+        }
+        if(NULL == head)
         {
             return NULL;
         }
+        TShortRoute* ret = *head;
+        *head = ret->m_next;
         --m_count;
-        TShortRoute* ret = m_head;
-        m_head = m_head->m_next;
+
+        head = &(m_HasPop[ret->m_NodeCount]);
+        ret->m_next = *head;
+        *head = ret;
+
         return ret;
     }
 };
@@ -100,9 +121,11 @@ public:
 public:
     inline void push(TShortRoute* cur)
     {
+        /*
         cur->m_next = m_head;
         m_head = cur;
         m_count++;
+        */
     }
 public:
     inline TShortRoute* pop()

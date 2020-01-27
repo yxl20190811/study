@@ -32,9 +32,9 @@ TSpf::~TSpf()
 }
 void TSpf::init(const char* aNodeName, const char* zNodeName)
 {
-    m_NodeCount = (int)(m_NodeMap.size());
     m_aNode = AddNode(aNodeName);
     m_zNode = AddNode(zNodeName);
+    m_NodeCount = (int)(m_NodeMap.size());
     m_dis = (TDisType*)malloc(sizeof(TDisType)*m_NodeCount+100);
     m_prev = (TNode**)malloc(sizeof(TNode*)*m_NodeCount+100);
     m_openlst = (TDisType*)malloc(sizeof(TDisType)*m_NodeCount+100);
