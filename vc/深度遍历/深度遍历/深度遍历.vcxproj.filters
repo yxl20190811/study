@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{b4ae3389-9e46-4c8d-8cc7-53ac250d389d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="TEdge.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="TGraph.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="TNode.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="TTypeDef.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="TDeepVisite.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="TEdge.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="TGraph.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="TNode.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="TTypeDef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="TDeepVisite.cpp" />
+  </ItemGroup>
+</Project>
