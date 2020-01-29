@@ -2,15 +2,17 @@
 #include "TSpf.h"
 #include "TDelEdgeLst.h"
 #include "TShortRoute.h"
+#include "TShortRouteLst.h"
+#include "TShortRoutePool.h"
+
 #include <Windows.h>
 
 class TKspf: public TSpf
 {
 private:
-    TShortRoutePool* m_ShortRoutePool;
+    TShortRoutePool m_ShortRoutePool;
     TShortRouteLst  m_RouteLst;
 public:
-    void init(const char* aNodeName, const char* zNodeName);
     TKspf();
     ~TKspf();
 public:
@@ -69,7 +71,6 @@ public:
             if(0 != kSpf)
             {
                 curRoute->SetDelEdgeState(false);
-                m_ShortRoutePool->push(curRoute);
             }
         }
     }
@@ -78,8 +79,14 @@ public:
     {
         if(m_prev[m_zNode->m_id] == NULL){return;}
         //从池中取出空闲的路由
-        TShortRoute* tmp = m_ShortRoutePool->pop();
-        
+        TShortRoute* tmp = NULL;
+        {
+            int DelEdgeCount = 0;
+            if(NULL != curRoute){ DelEdgeCount += curRoute->m_DelEdgeCount;}
+            if(NULL != curDelEdge){DelEdgeCount++;}
+            tmp = m_ShortRoutePool.pop(m_dis[m_zNode->m_id]+1, DelEdgeCount);
+        }
+
         TNode* curNode = m_zNode;
         int count = 0;
         for(; count < m_NodeCount && NULL != curNode; ++count)

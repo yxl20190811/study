@@ -1,43 +1,16 @@
-﻿生成启动时间为 2020/1/27 17:14:08。
+﻿生成启动时间为 2020/1/29 11:32:28。
      1>项目“C:\git\study\vc\K优算法\K优算法\K优算法\K优算法.vcxproj”在节点 2 上(build 个目标)。
      1>InitializeBuildStatus:
          正在创建“x64\Debug\K优算法.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt TKspf.cpp TShortRoute.cpp main.cpp
-         TShortRoute.cpp
-         Generating Code...
-         Compiling...
-         TKspf.cpp
-         Generating Code...
-         Compiling...
-         main.cpp
-     1>main.cpp(29): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : 参见“sprintf”的声明
-     1>main.cpp(30): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : 参见“sprintf”的声明
-     1>main.cpp(33): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : 参见“sprintf”的声明
-         Generating Code...
+         所有输出均为最新。
        ManifestResourceCompile:
          所有输出均为最新。
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\git\study\vc\K优算法\K优算法\x64\Debug\K优算法.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"x64\Debug\K优算法.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\git\study\vc\K优算法\K优算法\x64\Debug\K优算法.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\git\study\vc\K优算法\K优算法\x64\Debug\K优算法.lib" /MACHINE:X64 "x64\Debug\K优算法.exe.embed.manifest.res"
-         x64\Debug\main.obj
-         x64\Debug\TDelEdgeLst.obj
-         x64\Debug\TEdge.obj
-         x64\Debug\TGraph.obj
-         x64\Debug\TKspf.obj
-         x64\Debug\TNode.obj
-         x64\Debug\TShortRoute.obj
-         x64\Debug\TSpf.obj
-         x64\Debug\TTypeDef.obj
+         所有输出均为最新。
          K优算法.vcxproj -> C:\git\study\vc\K优算法\K优算法\x64\Debug\K优算法.exe
        Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"x64\Debug\K优算法.exe.embed.manifest" /manifest "x64\Debug\K优算法.exe.intermediate.manifest"
          所有输出均为最新。
-       LinkEmbedManifest:
-         所有输出均为最新。
-         K优算法.vcxproj -> C:\git\study\vc\K优算法\K优算法\x64\Debug\K优算法.exe
        FinalizeBuildStatus:
          正在删除文件“x64\Debug\K优算法.unsuccessfulbuild”。
          正在对“x64\Debug\K优算法.lastbuildstate”执行 Touch 任务。
@@ -45,4 +18,4 @@
 
 生成成功。
 
-已用时间 00:00:01.79
+已用时间 00:00:00.05

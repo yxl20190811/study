@@ -40,6 +40,8 @@
     <ClCompile Include="TDelEdgeLst.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="TShortRoutePool.cpp" />
+    <ClCompile Include="TShortRouteLst.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TEdge.h">
@@ -66,5 +68,7 @@
     <ClInclude Include="TDelEdgeLst.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="TShortRoutePool.h" />
+    <ClInclude Include="TShortRouteLst.h" />
   </ItemGroup>
 </Project>

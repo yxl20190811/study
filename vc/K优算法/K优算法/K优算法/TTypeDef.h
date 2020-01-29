@@ -1,7 +1,7 @@
 #pragma once
 
-typedef unsigned long long TDisType;
-typedef unsigned long long TCostType;
+typedef unsigned int TDisType;
+typedef unsigned int TCostType;
 
-const unsigned long long DisMax = 0xffffffffffffffff;
+const unsigned int DisMax = 0xffffffff;
 

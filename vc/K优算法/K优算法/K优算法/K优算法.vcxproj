@@ -145,6 +145,8 @@
     <ClCompile Include="TKspf.cpp" />
     <ClCompile Include="TNode.cpp" />
     <ClCompile Include="TShortRoute.cpp" />
+    <ClCompile Include="TShortRouteLst.cpp" />
+    <ClCompile Include="TShortRoutePool.cpp" />
     <ClCompile Include="TSpf.cpp" />
     <ClCompile Include="TTypeDef.cpp" />
   </ItemGroup>
@@ -155,6 +157,8 @@
     <ClInclude Include="TKspf.h" />
     <ClInclude Include="TNode.h" />
     <ClInclude Include="TShortRoute.h" />
+    <ClInclude Include="TShortRouteLst.h" />
+    <ClInclude Include="TShortRoutePool.h" />
     <ClInclude Include="TSpf.h" />
     <ClInclude Include="TTypeDef.h" />
   </ItemGroup>
