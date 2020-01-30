@@ -47,10 +47,9 @@ void TDeepNotRecursion::deep()
     TEdge* stack = NULL;
     
 
-    long long kSpf = 0;
+    
     while(true)
     {
-        ++kSpf;
         while(true)//循环寻找"有效"的后向边
         {
             //满足下面条件才是有效的后向边
@@ -65,6 +64,8 @@ void TDeepNotRecursion::deep()
             if(curEdge->m_zNode == m_zNode)
             {
                 curEdge->m_next = stack;
+                static long long kSpf = 0;
+                ++kSpf;
                 PrintRoute(kSpf, curEdge);
             }
 
