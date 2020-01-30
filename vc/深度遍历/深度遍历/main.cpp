@@ -20,8 +20,8 @@ void AddEdge(TGraph& spf, int i, int j)
 void test3()
 {
     TDeepNotRecursion spf;
-    const int x = 20;
-    const int y = 20;
+    const int x = 6;
+    const int y = 6;
     for(int i = 0; i < x; ++i)
     {
         for(int j = 0; j < y; ++j)
@@ -29,7 +29,7 @@ void test3()
             AddEdge(spf, i, j);
         }
     }
-    spf.init("3_3", "10_10");
+    spf.init("1_1", "2_2");
     spf.deep();
 }
 
