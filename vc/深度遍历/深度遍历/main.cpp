@@ -4,8 +4,9 @@
 #include "stdafx.h"
 #include "TDeepVisite.h"
 #include <Windows.h>
+#include "TDeepNotRecursion.h"
 
-void AddEdge(TDeepVisite& spf, int i, int j)
+void AddEdge(TGraph& spf, int i, int j)
 {
     char aNodeName[1000], zNodeName[1000];
     sprintf(aNodeName, "%d_%d", i, j);
@@ -18,7 +19,7 @@ void AddEdge(TDeepVisite& spf, int i, int j)
 
 void test3()
 {
-    TDeepVisite spf;
+    TDeepNotRecursion spf;
     const int x = 20;
     const int y = 20;
     for(int i = 0; i < x; ++i)
@@ -35,7 +36,7 @@ void test3()
 
 void test2()
 {
-    TDeepVisite spf;
+    TDeepNotRecursion spf;
     spf.AddEdge("A", "B", true, 1);
     spf.AddEdge("B", "C", true, 1);
     spf.AddEdge("C", "D", true, 1);
@@ -54,7 +55,7 @@ void test2()
 int _tmain(int argc, _TCHAR* argv[])
 {
     int start = ::GetTickCount();
-    test2();
+    test3();
     int end = ::GetTickCount();
     printf("\r\n used time = %d", end-start);
 	return 0;

@@ -28,6 +28,7 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="TDeepVisite.h" />
+    <ClInclude Include="TDeepNotRecursion.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -49,5 +50,6 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="TDeepVisite.cpp" />
+    <ClCompile Include="TDeepNotRecursion.cpp" />
   </ItemGroup>
 </Project>

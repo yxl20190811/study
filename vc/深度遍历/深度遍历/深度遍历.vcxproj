@@ -77,6 +77,7 @@
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TDeepNotRecursion.h" />
     <ClInclude Include="TDeepVisite.h" />
     <ClInclude Include="TEdge.h" />
     <ClInclude Include="TGraph.h" />
@@ -89,6 +90,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TDeepNotRecursion.cpp" />
     <ClCompile Include="TDeepVisite.cpp" />
     <ClCompile Include="TEdge.cpp" />
     <ClCompile Include="TGraph.cpp" />
