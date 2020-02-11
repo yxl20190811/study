@@ -27,16 +27,32 @@ public class MainActivity extends AppCompatActivity {
         tv = findViewById(R.id.textView);
         cb = findViewById(R.id.checkBox);
         mWifi = (WifiManager)this.getSystemService(Context.WIFI_SERVICE);
-        SetState();
+
 
         if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CHANGE_WIFI_STATE) !=
                 PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.CHANGE_WIFI_STATE},1);
         }
         else {
-
+            SetState();
         }
     }
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case 1:
+                //同意申请的权限
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "同意通过", Toast.LENGTH_SHORT).show();
+                    SetState();
+                    //拒绝申请的权限
+                } else {
+                    Toast.makeText(this, "拒绝通过", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+    }
+
     private void SetState(){
             cb.setEnabled(true);
             switch(mWifi.getWifiState()){
