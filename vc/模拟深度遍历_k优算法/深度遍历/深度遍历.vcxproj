@@ -14,6 +14,7 @@
     <ProjectGuid>{E1ED05F7-8B82-414B-AAFE-2CC1809B393D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>深度遍历</RootNamespace>
+    <ProjectName>深度遍历_K优算法</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
