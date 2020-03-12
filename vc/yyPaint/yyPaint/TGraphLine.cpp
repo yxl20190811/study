@@ -52,17 +52,24 @@ void TGraphLine::CalPos()
            x = x2-x1;
            y = y2-y1;
         }
-        
+        if(x != 0)
         {
-        
             m_x1 = x1 + m_aNode->m_width/2;
-            m_y1 = y2-(x-m_aNode->m_width/2)*y/x;
+            m_y1 = y1 + m_aNode->m_width/2*y/x;
 
-            m_x2 = x2-m_zNode->m_width/2;
-            m_y2 = y2-m_zNode->m_width/2*y/x;
-        
-            return;
+            m_x2 = x2 - m_zNode->m_width/2;
+            m_y2 = y2 - m_zNode->m_width/2*y/x;
+            
         }
+        else
+        {
+            m_x1 = x1 + m_aNode->m_width/2;
+            m_y1 = y1;
+
+            m_x2 = x2 - m_zNode->m_width/2;
+            m_y2 = y2;
+        }
+        return;
     }
     else
     {
@@ -73,13 +80,22 @@ void TGraphLine::CalPos()
            x = x2-x1;
            y = y2-y1;
         }
+        if(y != 0)
+        {
+            m_x1 = x1 + m_aNode->m_height/2*x/y;
+            m_y1 = y1 + m_aNode->m_height/2;
 
-        m_x1 = x1 + m_aNode->m_height/2*x/y;
-        m_y1 = y1 + m_aNode->m_height/2;
+            m_x2 = x2 - (m_zNode->m_height/2*x/y);
+            m_y2 = y2 - m_aNode->m_height/2;
+        }
+        else
+        {
+            m_x1 = x1;
+            m_y1 = y1 + m_aNode->m_height/2;
 
-        m_x2 = x2 - (m_zNode->m_height/2*x/y);
-        m_y2 = y2 - m_aNode->m_height/2;
-        
+            m_x2 = x2;
+            m_y2 = y2 - m_aNode->m_height/2;
+        }
         return;
     }
 }
