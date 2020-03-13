@@ -26,7 +26,7 @@ void TDrawLine::SetWnd(CWnd* wnd)
 
 LRESULT TDrawLine::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 {
-    //m_MouseMoveSelect.WindowProc(message, wParam, lParam);
+    m_MouseMoveSelect.WindowProc(message, wParam, lParam);
     switch(message)
     {
     case WM_COMMAND: 
