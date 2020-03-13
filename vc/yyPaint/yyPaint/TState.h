@@ -3,7 +3,6 @@
 typedef enum {
     DRAW_NODE,
     DRAW_LINE,
-    DRAW_LINEING,
     VIEW
 }TState;
 
