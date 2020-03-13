@@ -5,10 +5,12 @@
 #include "TDrawLine.h"
 #include "TGraph.h"
 #include "TOnDraw.h"
+#include "TDragNode.h"
 
 class TView : public CWnd, public TGraph
 {
 private:
+    TDragNode    m_DragNode;
     TOnSetCuror  m_OnSetCuror;
     TStateChang  m_state;
     TOnDraw      m_OnDraw;

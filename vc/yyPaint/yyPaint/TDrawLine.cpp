@@ -13,20 +13,10 @@ TDrawLine::TDrawLine(void)
 TDrawLine::~TDrawLine(void)
 {
 }
-void TDrawLine::SetGraph(TGraph*  graph)
-{
-    TGraphPtr::SetGraph(graph);
-    m_MouseMoveSelect.SetGraph(graph);
-}
-void TDrawLine::SetWnd(CWnd* wnd)
-{
-    TWndPtr::SetWnd(wnd);
-    m_MouseMoveSelect.SetWnd(wnd);
-}
+
 
 LRESULT TDrawLine::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 {
-    m_MouseMoveSelect.WindowProc(message, wParam, lParam);
     switch(message)
     {
     case WM_COMMAND: 

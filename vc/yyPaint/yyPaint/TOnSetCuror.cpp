@@ -18,7 +18,7 @@ LRESULT TOnSetCuror::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
         OnCreate(); 
         break;
     case WM_SETCURSOR: 
-        //SetCursor(m_hCur); 
+        SetCursor(m_hCur); 
         break;
     case WM_COMMAND: 
         OnCmmand(wParam);

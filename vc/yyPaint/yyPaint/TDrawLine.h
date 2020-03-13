@@ -12,9 +12,6 @@ public:
 public:
     TDrawLine(void);
     ~TDrawLine(void);
-    void SetGraph(TGraph*  graph);
-    void SetWnd(CWnd* wnd);
-    TMouseMoveSelect  m_MouseMoveSelect;
     LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
 public:
     void OnLButtonDown(int x, int y);

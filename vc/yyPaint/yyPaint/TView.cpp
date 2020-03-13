@@ -12,6 +12,10 @@ TView::TView()
 
     m_DrawLine.SetGraph(this);
     m_DrawLine.SetWnd(this);
+
+    m_DragNode.SetGraph(this);
+    m_DragNode.SetWnd(this);
+    
 }
 LRESULT TView::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -27,20 +31,33 @@ LRESULT TView::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
     {
         return TRUE;
     }
+    switch(m_state.m_state)
+    {
+        case DRAW_NODE:
+        {
+            if(m_DrawNode.WindowProc(message, wParam, lParam))
+            {
+                return TRUE;
+            }
+        }
+        break;
+        case DRAW_LINE:
+        {
+            if(m_DrawLine.WindowProc(message, wParam, lParam))
+            {
+                return TRUE;
+            }
+        }
+        break;
 
-    if(m_state.m_state == DRAW_NODE)
-    {
-        if(m_DrawNode.WindowProc(message, wParam, lParam))
+        case VIEW:
         {
-            return TRUE;
+            if(m_DragNode.WindowProc(message, wParam, lParam))
+            {
+                return TRUE;
+            }
         }
-    }
-    if(m_state.m_state == DRAW_LINE)
-    {
-        if(m_DrawLine.WindowProc(message, wParam, lParam))
-        {
-            return TRUE;
-        }
+        break;
     }
     return CWnd::WindowProc(message, wParam, lParam);
 }

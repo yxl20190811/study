@@ -19,20 +19,6 @@ LRESULT TMouseMoveSelect::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 {
      switch(message)
     {
-        case WM_COMMAND: 
-            {
-                UINT nID = LOWORD(wParam);
-                switch(nID)
-                {
-                case ID_DRAW_LINE:
-                    if(NULL != m_SelectNode)
-                    {
-                        m_SelectNode->OnDrawSelectCancel(m_wnd->GetDC());
-                        m_SelectNode = NULL;
-                    }
-                }
-            }
-            break;
         case WM_MOUSEMOVE:
             OnMouseMove(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));break;
      }
@@ -46,7 +32,8 @@ void TMouseMoveSelect::OnMouseMove(int posX, int posY)
     {
         if(!m_SelectNode->IsSelect(posX, posY))
         {
-            m_SelectNode->OnDrawSelectCancel(m_wnd->GetDC());
+            m_SelectNode->m_Selected = false;
+            m_wnd->Invalidate(TRUE);
             m_SelectNode = NULL;
         }
     }
@@ -58,8 +45,10 @@ void TMouseMoveSelect::OnMouseMove(int posX, int posY)
 
     if(cell != m_SelectNode && NULL != m_SelectNode)
     {
-        m_SelectNode->OnDrawSelectCancel(m_wnd->GetDC());
+        m_SelectNode->m_Selected = false;
     }
-    cell->OnDrawSelect(m_wnd->GetDC());
     m_SelectNode = (TGraphNode*)cell;
+    m_SelectNode->m_Selected = true;
+    m_wnd->Invalidate(TRUE);
+    
 }
