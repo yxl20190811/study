@@ -1,5 +1,7 @@
-public class InnerPrivateClass_SingleObj {
+import java.io.Serializable;
 
+public class InnerPrivateClass_SingleObj implements Serializable {
+    private  HungerSingleObj m_flag = HungerSingleObj.getInstance();
     public InnerPrivateClass_SingleObj(){
         System.out.println("enter InnerPrivateClass_SingleObj()");
 
@@ -12,5 +14,8 @@ public class InnerPrivateClass_SingleObj {
     }
     private final static class InnerPrivateClass{
         public static final InnerPrivateClass_SingleObj instance = new InnerPrivateClass_SingleObj();
+    }
+    public Object readResolve(){
+        return InnerPrivateClass.instance;
     }
 }

@@ -1,4 +1,6 @@
-public class HungerSingleObj {
+import java.io.Serializable;
+
+public class HungerSingleObj implements Serializable {
     private HungerSingleObj(){
         System.out.println("enter HungerSingleObj()");
 

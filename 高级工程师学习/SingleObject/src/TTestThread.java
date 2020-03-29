@@ -4,7 +4,7 @@ public class TTestThread extends Thread {
         return InnerPrivateClass_SingleObj.getInstance();
     }
 
-    public static void MyRun() {
+    public static void test() {
         for(int i = 0; i < 2; ++i){
             CreateObj();
             try {
@@ -16,6 +16,6 @@ public class TTestThread extends Thread {
     }
 
     public void run(){
-        MyRun();
+        test();
     }
 }
