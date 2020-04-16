@@ -21,7 +21,7 @@ void TInt64Reg::loadFromFile(const char* appName, const char* iniFileName)
 	if(GetPrivateProfileString(appName, m_name.c_str(), "", buf, sizeof(buf)-10,  iniFileName) > 0)
 	{
 		__int64 v = _atoi64(buf);
-		//*((__int64*)m_ptr) = v;
+		*((__int64*)m_ptr) = v;
 	}
 	
 }
