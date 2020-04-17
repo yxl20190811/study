@@ -18,13 +18,36 @@ public:
 	virtual void loadFromFile(const char* appName, const char* iniFileName);
 	virtual void save2File(const char* appName, const char* iniFileName);
 };
-	
+
+class TIntReg : public TReg
+{
+public:
+	virtual void loadFromFile(const char* appName, const char* iniFileName);
+	virtual void save2File(const char* appName, const char* iniFileName);
+};
+class TDoubleReg : public TReg
+{
+public:
+	virtual void loadFromFile(const char* appName, const char* iniFileName);
+	virtual void save2File(const char* appName, const char* iniFileName);
+};
+
+class TStringReg : public TReg
+{
+public:
+	virtual void loadFromFile(const char* appName, const char* iniFileName);
+	virtual void save2File(const char* appName, const char* iniFileName);
+};
+
 class TRegConfigIni
 {
 private:
 	static std::map<std::string, TReg*>  m_map;
 public:
 	TRegConfigIni(__int64* addr, const char* name, const char* FileName, int FileLine);
+	TRegConfigIni(int* addr, const char* name, const char* FileName, int FileLine);
+	TRegConfigIni(std::string* addr, const char* name, const char* FileName, int FileLine);
+	TRegConfigIni(double* addr, const char* name, const char* FileName, int FileLine);
 	~TRegConfigIni(void);
 	static void loadFromFile();
 	static void save2File();
