@@ -2,16 +2,22 @@
 #include <list>
 #include <stdlib.h>
 
-static std::list<TRegUt*> m_list;
+
 class TUt
 {
+public:
+	static std::list<TRegUt*>* get()
+	{
+		static std::list<TRegUt*> lst;
+		return &lst;
+	}
 public:
 	TUt()
 	{
 		int ok = 0;
 		int nopass = 0;
-		for(std::list<TRegUt*>::iterator it = m_list.begin();
-			m_list.end() != it; ++it)
+		for(std::list<TRegUt*>::iterator it = TUt::get()->begin();
+			TUt::get()->end() != it; ++it)
 		{
 			if((*it)->m_fun() < 0)
 			{
@@ -34,7 +40,7 @@ TRegUt::TRegUt(int (*fun)(), const char* name, const char* FileName, int FileLin
 	m_name = name;
 	m_FileName =  FileName;
 	m_FileLine = FileLine;
-	m_list.push_back(this);
+	TUt::get()->push_back(this);
 }
 
 
