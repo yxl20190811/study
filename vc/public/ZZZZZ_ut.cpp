@@ -1,7 +1,7 @@
 #include "ut.h"
 #include <list>
 #include <stdlib.h>
-
+#include "TMyConfigIni.h"
 
 class TUt
 {
@@ -14,6 +14,10 @@ public:
 public:
 	TUt()
 	{
+		if(IsUtTest::get() == 0)
+		{
+			return;
+		}
 		int ok = 0;
 		int nopass = 0;
 		for(std::list<TRegUt*>::iterator it = TUt::get()->begin();

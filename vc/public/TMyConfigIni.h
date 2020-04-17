@@ -10,5 +10,8 @@ ConfigIni(std::string, UTTestParam3, "3");
 ConfigIni(double, UTTestParam4, 4.0);
 
 //请添加你的配置参数
-ConfigIni(__int64, LogFileLevel, 1);
-ConfigIni(__int64, LogScreenLevel, 1);
+ConfigIni(int, LogFileLevel, 1);
+ConfigIni(int, LogScreenLevel, 1);
+ConfigIni(int, DebugFileLevel, 1);
+
+ConfigIni(int, IsUtTest, 1);
