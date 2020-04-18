@@ -49,7 +49,7 @@ TLog::TLog(char* FileName, int FileLine, int level)
 TLog::~TLog()
 {
 	
-	if(0 != (LogScreenLevel::get() & m_level)) printf("%s", m_buf);
+	if(0 != (LogScreenLevel() & m_level)) printf("%s", m_buf);
 
 	
 
@@ -57,7 +57,7 @@ TLog::~TLog()
 	::GetLocalTime(&st);
 	m_pos += sprintf(m_buf + m_pos, "    [%04d-%d-%02d %02d:%02d:%02d:%04d]", st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond, st.wMilliseconds);
 
-	if(0 != (LogFileLevel::get() & m_level))   output(m_logFile, &m_LogCs, "log");
+	if(0 != (LogFileLevel() & m_level))   output(m_logFile, &m_LogCs, "log");
 
 
 	m_pos += sprintf(m_buf + m_pos, "[thread=%d]", ::GetCurrentThreadId());
@@ -72,7 +72,7 @@ TLog::~TLog()
 	}
 
 	
-	if(0 != (DebugFileLevel::get() & m_level))  output(m_debugFile, &m_DebugCs, "debug");
+	if(0 != (DebugFileLevel() & m_level))  output(m_debugFile, &m_DebugCs, "debug");
 	//文件过长则产生新文件
 	
 }

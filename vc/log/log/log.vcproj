@@ -174,11 +174,7 @@
 			Name="public"
 			>
 			<File
-				RelativePath="..\..\public\AAA_1_TRegConfigIni.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\public\AAA_2_MyConfigIni.cpp"
+				RelativePath="..\..\public\AAAA_TConfigIni.cpp"
 				>
 			</File>
 			<File
@@ -215,14 +211,6 @@
 			</File>
 			<File
 				RelativePath="..\..\public\TLog.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\public\TMyConfigIni.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\public\TRegConfigIni.h"
 				>
 			</File>
 			<File

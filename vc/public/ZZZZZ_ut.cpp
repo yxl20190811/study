@@ -1,7 +1,9 @@
 #include "ut.h"
 #include <list>
 #include <stdlib.h>
-#include "TMyConfigIni.h"
+#include "TConfigIni.h"
+
+ConfigIni(int, IsUtTest, 1);
 
 class TUt
 {
@@ -14,7 +16,7 @@ public:
 public:
 	TUt()
 	{
-		if(IsUtTest::get() == 0)
+		if(IsUtTest() != 1)
 		{
 			return;
 		}
