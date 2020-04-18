@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <ut.h>
 #pragma warning(disable:4996)
 
 char iniFileName[1024*100]={0};
@@ -74,4 +75,77 @@ void WriteIni(const char* name, std::string* address)
 	char buf[1024*100];
 	sprintf(buf, "%s", (*address).c_str());
 	WritePrivateProfileString(appName, name, buf, iniFileName);
+}
+
+UT_TEST(IntIni)
+{
+	int value = 1;
+	WriteIni("ut_Int", &value);
+	int oldValue = value;
+	value++;
+	int newValue = value;
+
+    ReadIni("ut_Int", &value);
+	if(value != oldValue)
+	{
+		return -1;
+	}
+	value = newValue;
+	WriteIni("ut_Int", &value);
+	value = oldValue;
+	ReadIni("ut_Int", &value);
+	if(value != newValue)
+	{
+		return -1;
+	}
+	return 1;
+}
+
+UT_TEST(DoubleIni)
+{
+	double value = 1;
+	WriteIni("ut_double", &value);
+	double oldValue = value;
+	value++;
+	double newValue = value;
+
+    ReadIni("ut_double", &value);
+	if(value != oldValue)
+	{
+		return -1;
+	}
+	value = newValue;
+	WriteIni("ut_double", &value);
+	value = oldValue;
+	ReadIni("ut_double", &value);
+	if(value != newValue)
+	{
+		return -1;
+	}
+	return 1;
+}
+
+
+UT_TEST(StringIni)
+{
+	std::string value = "1234";
+	WriteIni("ut_sring", &value);
+	std::string oldValue = value;
+	value = "4321";
+	std::string newValue = value;
+
+    ReadIni("ut_sring", &value);
+	if(value != oldValue)
+	{
+		return -1;
+	}
+	value = newValue;
+	WriteIni("ut_sring", &value);
+	value = oldValue;
+	ReadIni("ut_sring", &value);
+	if(value != newValue)
+	{
+		return -1;
+	}
+	return 1;
 }
