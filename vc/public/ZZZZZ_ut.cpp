@@ -2,8 +2,8 @@
 #include <list>
 #include <stdlib.h>
 #include "TConfigIni.h"
-
-ConfigIni(int, IsUtTest, 1);
+#include <windows.h>
+#include <conio.h>
 
 class TUt
 {
@@ -16,10 +16,22 @@ public:
 public:
 	TUt()
 	{
-		if(IsUtTest() != 1)
+		LPWSTR cmdLine = ::GetCommandLineW();
+		int argc = 0;
+		LPWSTR* argv = CommandLineToArgvW(cmdLine, &argc);  
+		if( 2 != argc)
 		{
 			return;
 		}
+		LPWSTR cmd = argv[1];
+		unsigned long len = lstrlenW (cmd);
+		char buf[1024*100];
+		wcstombs(buf, cmd, len+1);
+		if(0 != strcmp(buf, "UT_TEST"))
+		{
+			return;
+		}
+		////////////////////////
 		int ok = 0;
 		int nopass = 0;
 		for(std::list<TRegUt*>::iterator it = TUt::get()->begin();
@@ -36,6 +48,9 @@ public:
 			}
 		}
 		printf("\r\nut finish. [%d no pass] [%d ok]", nopass, ok);
+		printf("\r\npress any key to exit");
+		getch();
+		exit(0);
 	}
 };
 
