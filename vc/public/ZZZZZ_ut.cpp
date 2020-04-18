@@ -4,6 +4,7 @@
 #include "TConfigIni.h"
 #include <windows.h>
 #include <conio.h>
+#pragma warning(disable:4996)
 
 class TUt
 {
@@ -40,14 +41,14 @@ public:
 			if((*it)->m_fun() < 0)
 			{
 				++nopass;
-				printf("\r\n[ut test error][%s:%s:%d]", (*it)->m_name.c_str(), (*it)->m_FileName.c_str(), (*it)->m_FileLine);
+				printf("\r\n[ut_test fail][%s]    [%s:%d]", (*it)->m_name.c_str(), (*it)->m_FileName.c_str(), (*it)->m_FileLine);
 			}
 			else
 			{
 				++ok;
 			}
 		}
-		printf("\r\nut finish. [%d no pass] [%d ok]", nopass, ok);
+		printf("\r\n\r\nut_test finish. [%d fail] [%d success]", nopass, ok);
 		printf("\r\npress any key to exit");
 		getch();
 		exit(0);

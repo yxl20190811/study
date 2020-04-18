@@ -149,3 +149,44 @@ UT_TEST(StringIni)
 	}
 	return 1;
 }
+
+UT_TEST(Config1)
+{
+	{
+	std::string value = "1234";
+	WriteIni("ut_string", &value);
+	}
+	{
+	double value = 1234;
+	WriteIni("ut_double", &value);
+	}
+	{
+	int value = 1234;
+	WriteIni("ut_int", &value);
+	}
+	return 1;
+}
+
+ConfigInt(ut_int, 0);
+ConfigInt(ut_double, 0);
+ConfigString(ut_string, "0");
+
+UT_TEST(StringIni_1)
+{
+	
+	char* text = (char*)ut_string::get();
+	if(0 != strcmp(text, "1234"))
+	{
+		return -1;
+	}
+	
+	if(1234!=ut_double::get())
+	{
+		return -1;
+	}
+	if(1234!=ut_int::get())
+	{
+		return -1;
+	}
+	return 1;
+}

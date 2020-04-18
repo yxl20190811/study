@@ -4,9 +4,9 @@
 #include "TCriticalSection.h"
 #include "TConfigIni.h"
 
-ConfigIni(int, LogFileLevel, 1);
-ConfigIni(int, LogScreenLevel, 1);
-ConfigIni(int, DebugFileLevel, 1);
+ConfigInt(LogFileLevel, 1);
+ConfigInt(LogScreenLevel, 1);
+ConfigInt(DebugFileLevel, 1);
 
 #define  IF_LOG(level) if(1==1)
 #define LOG(level) TLog log(__FILE__,__LINE__, level); log
