@@ -17,7 +17,7 @@ public class TMain {
         tomcat.getHost().addChild(context);
 
         tomcat.addServlet(contextPath, "homeServlet", new TMySpringBoot());
-        context.addServletMappingDecoded("/hello", "homeServlet");
+        context.addServletMappingDecoded("/*", "homeServlet");
         tomcat.start();
         tomcat.getServer().await();
     }
