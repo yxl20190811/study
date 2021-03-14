@@ -20,8 +20,7 @@ public class TMySpringBoot  extends HttpServlet {
 
     private Properties m_properties = new Properties();
     private Map<String, Object> m_ioc = new HashMap<String, Object>();
-    private Map<String, Method> m_HandMapping = new HashMap<String, Method>();
-    private String m_ContextPath;
+    private Map<String, Method> m_HandMapping;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
         doDispatch(req, resp);
@@ -37,10 +36,10 @@ public class TMySpringBoot  extends HttpServlet {
 
     private void doRealDispatch(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         System.out.println("request scheme: " + req.getScheme());
-        String url = req.getRequestURI() + "/";
+        String url = req.getRequestURI();
         String contextPath = req.getContextPath();
-        url = url.replaceAll(contextPath, "");
-        url = url.replaceAll("/+", "/");
+        url.replaceAll(contextPath, "");
+        url.replaceAll("/+", "/");
         Method m = m_HandMapping.get(url);
         if(null == m){
             resp.getWriter().print("404, Not Find");
@@ -55,16 +54,7 @@ public class TMySpringBoot  extends HttpServlet {
         }
         Map<String, String[]> params = req.getParameterMap();
         try {
-            String y = "";
-            if(null != params) {
-                String[] x = params.get("name");
-                if (null != x) {
-                    y = x[0];
-                }
-            }
-            Object[] tmpReq = new Object[]{};
-            String ret = (String)(m.invoke(oThis, tmpReq));
-            resp.getWriter().write(ret);
+            m.invoke(oThis, new Object[]{req, resp, params.get("name")[0]});
             return;
         } catch (IllegalAccessException e) {
             e.printStackTrace();
@@ -77,28 +67,27 @@ public class TMySpringBoot  extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        m_ContextPath = this.getClass().getClassLoader().getResource(".").getPath();
         //读取配置文件
         try {
             LoadConfig();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
         //找到包目录
-        String PackageName =  m_ContextPath;
-
+        String PackageName = this.getClass().getPackageName();
         String PackagePath = PackageName.replaceAll("\\.", "/");
         //如果配置文件中有配置上层目录，则将上层目录加到包目录中
         String ScannerDir = m_properties.getProperty("ScannerDir");
         if(null != ScannerDir){
            PackagePath = PackagePath + "/" + ScannerDir + "/";
         }
-        //PackagePath = PackagePath + "/" + ".." + "/";
+        PackagePath = PackagePath + "/" + ".." + "/";
         PackagePath = PackagePath.replaceAll("/+", "/");
+
         //遍历包的上层目录下的所有的文件, 得到java类文件名类表
         List<String> FileNameLst = new ArrayList<String>();
-        FindFileFromPath(PackagePath, FileNameLst);
+        //FindFileFromPath((PackagePath, FileNameLst);
+        //FindFileFromPath();
         List<String> ClassFileNameLst = new ArrayList<String>();
         FindClasFileName(FileNameLst, ClassFileNameLst);
         //反向映射所有的类，对于注解是MyRestController， MyService的类就作为单实例加入ioc列表中
@@ -114,7 +103,7 @@ public class TMySpringBoot  extends HttpServlet {
     private void DoRestController() {
         for(Map.Entry<String, Object> it:m_ioc.entrySet()) {
             Class<?> clazz = it.getValue().getClass();
-            if(!clazz.isAnnotationPresent(MyRestController.class)){
+            if(clazz.isAnnotationPresent(MyRestController.class)){
                 continue;
             }
             String BaseUrl = "";
@@ -130,7 +119,7 @@ public class TMySpringBoot  extends HttpServlet {
                     continue;
                 }
                 String url = "/" + BaseUrl + "/" + g.value() + "/";
-                url = url.replaceAll("/+", "/");
+                url.replaceAll("/+", "/");
                 m_HandMapping.put(url, m);
                 System.out.println("Mapping:" + url + "->" + m);
             }
@@ -155,7 +144,6 @@ public class TMySpringBoot  extends HttpServlet {
                     continue;
                 }
                 try {
-                    f.setAccessible(true);
                     f.set(it.getValue(), ins);
                 }catch (IllegalAccessException ex){
                     ex.printStackTrace();
@@ -171,7 +159,6 @@ public class TMySpringBoot  extends HttpServlet {
         for(String ClassName: ClassFileNameLst){
             try {
                 Class<?>  clazz = Class.forName(ClassName);
-                if(null == clazz){continue;}
                 if(clazz.isAnnotationPresent(MyRestController.class)) {
                     String BeanName = clazz.getSimpleName();
                     Change2BeanNam(BeanName);
@@ -211,7 +198,6 @@ public class TMySpringBoot  extends HttpServlet {
 
     private void LoadConfig() throws IOException {
         InputStream is = this.getClass().getClassLoader().getResourceAsStream("application.properties");
-        if(null == is) return;
         m_properties.load(is);;
         is.close();
     }
@@ -220,7 +206,6 @@ public class TMySpringBoot  extends HttpServlet {
         for(String s: FileNameLst){
             if(s.endsWith(".class")) {
                 String ClassName = s.replace(".class", "");
-                ClassName = ClassName.replaceAll(m_ContextPath, "");
                 ClassName = ClassName.replaceAll("/", "\\.");
                 classFileNameLst.add(ClassName);
             }
@@ -228,17 +213,14 @@ public class TMySpringBoot  extends HttpServlet {
     }
 
     private void FindFileFromPath(String path, List<String> FileNameLst) {
-        //URL url =this.getClass().getClassLoader().getResource(path);
-        File classPath = new File(path);
+        URL url =this.getClass().getClassLoader().getResource(path);
+        File classPath = new File(url.getFile());
         for(File f: classPath.listFiles()){
-            String name = path + "/" + f.getName();
-            name = name.replaceAll("/+", "/");
             if(f.isDirectory()){
-
-                FindFileFromPath(name, FileNameLst);
+                FindFileFromPath(path + "/" + f.getName(), FileNameLst);
             }
             else {
-                FileNameLst.add(name);
+                FileNameLst.add( path + "/" + f.getName());
             }
         }
     }
