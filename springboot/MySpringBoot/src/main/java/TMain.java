@@ -10,7 +10,7 @@ public class TMain {
         tomcat.setBaseDir(docBase);
         tomcat.getHost().setAutoDeploy(false);
 
-        String contextPath = "/book";
+        String contextPath = "";
         StandardContext context = new StandardContext();
         context.setPath(contextPath);
         context.addLifecycleListener(new Tomcat.FixContextListener());
